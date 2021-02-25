@@ -3,12 +3,15 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <net/ethernet.h>
 #include <netinet/if_ether.h>
 #include <unistd.h>
 #include <errno.h>
 
 #include <stdlib.h>
 #include <stdio.h>
+
+#define PACKETLEN sizeof(struct ether_header) + sizeof(struct ether_arp)
 
 int main(int argc, char const *argv[])
 {
