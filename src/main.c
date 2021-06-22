@@ -1,32 +1,37 @@
-#include <sys/socket.h>
-#include <sys/un.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <arpa/inet.h>
-#include <net/ethernet.h>
-#include <netinet/if_ether.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <errno.h>
 
-#include <stdlib.h>
-#include <stdio.h>
+#include <arpa/inet.h>
+#include <net/if.h>
+#include <sys/socket.h>
+#include <netpacket/packet.h>
+#include <net/ethernet.h>
+#include <netinet/if_ether.h>
+#include <signal.h>
 
-#define PACKETLEN sizeof(struct ether_header) + sizeof(struct ether_arp)
+void help()
+{
+    printf("usage:\t./arp-poison <ip_source> <ip_destination> <interface>\n");
+    printf("ex:\t./arp-poison 10.1.1.1 10.1.1.2 wlo1\n");
+}
 
 int main(int argc, char const *argv[])
 {
-    char *victim_ip, *poissoning_ip, *interface;
+    char *ip_src, *ip_dest, *interface;
+    uint8_t *my_mac_address, *victim_mac_address;
+    struct sockaddr_ll device;
+    int sock;
+
     if (argc != 4)
-    {
-        printf("usage:\t./arp-poison <ip_source> <ip_destination> <interface>\n");
-        printf("ex:\t./arp-poison 10.1.1.1 10.1.1.2 eth0\n");
-        exit(1);
-    }
-    int sock = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
-    if (sock == -1)
-    {
-        perror("socket()");
-        exit(errno);
-    }
+        help(), exit(1);
+
+    strcpy(ip_src, argv[1]), strcpy(ip_dest, argv[2]), strcpy(interface, argv[3]);
+
+    if ((sock = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP))) < 0)
+        perror("socket()"), exit(errno);
+
     return 0;
 }
