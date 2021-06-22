@@ -15,7 +15,7 @@
 void help()
 {
     printf("usage:\t./arp-poison <ip_source> <ip_destination> <interface>\n");
-    printf("ex:\t./arp-poison 10.1.1.1 10.1.1.2 wlo1\n");
+    printf("ex:\t./arp-poison 192.168.1.1 192.168.1.2 wlo1\n");
 }
 
 int main(int argc, char const *argv[])
