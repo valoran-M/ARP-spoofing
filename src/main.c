@@ -12,6 +12,8 @@
 #include <netinet/if_ether.h>
 #include <signal.h>
 
+#define PKTLEN sizeof(struct ether_header) + sizeof(struct ether_arp)
+
 void help()
 {
     printf("usage:\t./arp-poison <ip_source> <ip_destination> <interface>\n");
@@ -20,18 +22,16 @@ void help()
 
 int main(int argc, char const *argv[])
 {
-    char *ip_src, *ip_dest, *interface;
-    uint8_t *my_mac_address, *victim_mac_address;
+    char packet[PKTLEN];
     struct sockaddr_ll device;
     int sock;
 
-    if (argc != 4)
-        help(), exit(1);
-
-    strcpy(ip_src, argv[1]), strcpy(ip_dest, argv[2]), strcpy(interface, argv[3]);
-
-    if ((sock = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP))) < 0)
-        perror("socket()"), exit(errno);
+    sock = socket(AF_PACKET, SOCK_RAW, htons(ETH_P_ARP));
+    if (sock < 0)
+    {
+        fprintf(stderr, "socket() \n\t -> %s\n", strerror(errno));
+        exit(errno);
+    }
 
     return 0;
 }
