@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "ethernet.h": "c",
+        "atomic": "cpp",
+        "cstdint": "cpp",
+        "packet.h": "c",
+        "network.h": "c",
+        "future": "c",
+        "system_error": "c"
+    }
+}
