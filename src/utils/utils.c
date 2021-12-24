@@ -9,6 +9,6 @@ void help()
 
 void error(char *code)
 {
+    help();
     perror(code);
-    exit(EXIT_FAILURE);
 }
