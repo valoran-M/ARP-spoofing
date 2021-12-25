@@ -10,8 +10,7 @@ int create_ethernet_trame(t_ether_trame *ether, const uint8_t *dest_mac, const u
     memcpy((uint8_t *)ether + ETH_HEADER_LENGTH, arp_p, sizeof(uint8_t) * ARP_HEADER_LENGTH);
     printf("[+] ETHER trame create\n");
 
-    DEBUG_LOG("create ethernet trame");
-
+    DEBUG_LOG;
     return 0;
 }
 
@@ -34,6 +33,6 @@ int create_arp_packet(p_arp_packet *arp, const uint16_t opcode,
     }
     printf("[+] ARP packet create\n");
 
-    DEBUG_LOG("create arp packet");
+    DEBUG_LOG;
     return 0;
 }

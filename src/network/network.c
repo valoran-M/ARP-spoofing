@@ -7,7 +7,7 @@ int send_packet_to_brodcast(const int sock, struct sockaddr_ll *device,
     t_ether_trame ether_trame;
     p_arp_packet arp_packet;
 
-    DEBUG_LOG("arp packet creation");
+    DEBUG_LOG;
     if (create_arp_packet(&arp_packet, ARPOP_REQUEST,
                           ETH_BRODCAST, victim_ip,
                           my_mac_address, spoofed_ip_source))
@@ -16,14 +16,14 @@ int send_packet_to_brodcast(const int sock, struct sockaddr_ll *device,
         return 1;
     }
 
-    DEBUG_LOG("ether trame creation");
+    DEBUG_LOG;
     if (create_ethernet_trame(&ether_trame, ETH_BRODCAST, my_mac_address, &arp_packet))
     {
         error("create_ethernet_tram():");
         return 1;
     }
 
-    DEBUG_LOG("sendto");
+    DEBUG_LOG;
     if (sendto(sock, &ether_trame, ETH_HEADER_LENGTH + ARP_HEADER_LENGTH, 0, (const struct sockaddr *)device, sizeof(*device)) < 0)
     {
         error("sendto():");
