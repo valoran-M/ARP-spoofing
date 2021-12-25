@@ -29,7 +29,6 @@ int send_packet_to_brodcast(const int sock, struct sockaddr_ll *device,
         error("sendto():");
         return 1;
     }
-
     printf("[+] Send packet to brodcast\n");
 
     return 0;
@@ -37,17 +36,11 @@ int send_packet_to_brodcast(const int sock, struct sockaddr_ll *device,
 
 int get_victim_response(const int sock, const char *victim_ip, uint8_t *victime_mac_adresse)
 {
-    char buffer[IP_MAXPACKET];
-    t_ether_trame *ether_trame;
-    p_arp_packet *arp_packet;
-    uint8_t victim_mac_address[ETH_ADD_L];
-
-    char uint8_t_to_str[INET_ADDRSTRLEN] = {0};
-
+    int rep = 1;
     printf("[*] Listening target response\n");
-    while (1)
+    while (rep)
     {
     }
 
-    return 1;
+    return 0;
 }
