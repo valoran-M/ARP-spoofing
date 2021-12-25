@@ -5,15 +5,16 @@
 #include <net/if.h>
 #include <netinet/ip.h>
 #include <net/if_arp.h>
+#include <linux/if_ether.h>
+#include <linux/if_packet.h>
 
+#include "network/network.h"
 #include "network/interface.h"
 #include "utils/debug.h"
 #include "utils/utils.h"
 
 int get_my_mac_adresse(const int sock, const char *interface, uint8_t *my_mac)
 {
-    DEBUG_LOG("get my mac adresse");
-
     struct ifreq ifreq_c;
     memset(&ifreq_c, 0, sizeof(ifreq_c));
     strncpy(ifreq_c.ifr_name, interface, IFNAMSIZ - 1);
@@ -21,7 +22,25 @@ int get_my_mac_adresse(const int sock, const char *interface, uint8_t *my_mac)
     if ((ioctl(sock, SIOCGIFHWADDR, &ifreq_c)) < 0)
     {
         error("ioctl():");
-        return -1;
+        return 1;
     }
+    memcpy(my_mac, ifreq_c.ifr_hwaddr.sa_data, sizeof(uint8_t) * ETH_ADD_L);
+
+    printf("[+] Your MAC adress :");
+    PRINT_MAC_ADDRESS(my_mac);
+    return 0;
+}
+
+int setup_sockaddr(struct sockaddr_ll *device, const char *interface)
+{
+    memset(device, 0, sizeof(device));
+    device->sll_ifindex = if_nametoindex(interface);
+    if (device->sll_ifindex == 0)
+    {
+        error("if_nameto_index():");
+        return 1;
+    }
+    printf("[+] Index : %d from interface %s\n", device->sll_ifindex, interface);
+    device->sll_halen = ETH_ALEN;
     return 0;
 }

@@ -24,7 +24,6 @@ typedef struct s_ether_trame
     uint8_t dest_mac[ETH_ADD_L];
     uint8_t src_mac[ETH_ADD_L];
     uint16_t ether_type;
-    p_arp_packet arp_packet;
 } t_ether_trame;
 
 /**

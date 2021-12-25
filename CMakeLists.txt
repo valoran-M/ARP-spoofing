@@ -21,6 +21,6 @@ set(HEADERS
 
 add_executable(arp-poison src/main.c ${SRCS} ${HEADERS})
 add_compile_options(-Wall -Wextra -pedantic -Werror)
-add_compile_definitions(DEBUG_MODE)
+# add_compile_definitions(DEBUG_MODE)
 target_compile_features(arp-poison PRIVATE cxx_std_17)
 target_include_directories(arp-poison PUBLIC src/)

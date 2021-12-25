@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <arpa/inet.h>
 #include <netinet/ip.h>
@@ -11,12 +12,14 @@
 
 int create_ethernet_trame(t_ether_trame *ether, const uint8_t *dest_mac, const uint8_t *src_mac, const p_arp_packet *arp_p)
 {
-    ether = malloc(sizeof(t_ether_trame));
+    memcpy(&ether->dest_mac, dest_mac, sizeof(uint8_t) * ETH_ADD_L);
+    memcpy(&ether->src_mac, src_mac, sizeof(uint8_t) * ETH_ADD_L);
 
-    memcpy(ether->dest_mac, dest_mac, sizeof(uint8_t) * ETH_ADD_L);
-    memcpy(ether->src_mac, src_mac, sizeof(uint8_t) * IP_ADD_L);
     ether->ether_type = htons(ETH_P_ARP);
-    memcpy((uint8_t *)&ether->arp_packet, arp_p, sizeof(p_arp_packet));
+
+    memcpy((uint8_t *)ether + ETH_HEADER_LENGTH, arp_p, sizeof(uint8_t) * ARP_HEADER_LENGTH);
+    printf("[+] ETHER trame create\n");
+
     DEBUG_LOG("create ethernet trame");
 
     return 0;
@@ -26,8 +29,6 @@ int create_arp_packet(p_arp_packet *arp, const uint16_t opcode,
                       const uint8_t *dest_mac, const char *dest_ip,
                       const uint8_t *src_mac, const char *spoofed_ip)
 {
-    arp = malloc(sizeof(p_arp_packet));
-
     arp->hardware_type = htons(1);
     arp->protocol_type = htons(ETH_P_IP);
     arp->hardware_adress_length = ETH_ADD_L;
@@ -39,9 +40,10 @@ int create_arp_packet(p_arp_packet *arp, const uint16_t opcode,
         inet_pton(AF_INET, spoofed_ip, arp->sender_ip) < 0)
     {
         error("inet_pton():");
-        return -1;
+        return 1;
     }
+    printf("[+] ARP packet create\n");
 
-    DEBUG_LOG("create_arp_packet");
+    DEBUG_LOG("create arp packet");
     return 0;
 }
