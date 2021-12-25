@@ -37,9 +37,18 @@ int send_packet_to_brodcast(const int sock, struct sockaddr_ll *device,
 int get_victim_response(const int sock, const char *victim_ip, uint8_t *victime_mac_adresse)
 {
     int rep = 1;
+    char buffer[IP_MAXPACKET];
     printf("[*] Listening target response\n");
     while (rep)
     {
+        if (recv(sock, buffer, IP_MAXPACKET, 0) < 0)
+        {
+            return 1;
+        }
+        else
+        {
+            printf("OK\n");
+        }
     }
 
     return 0;
