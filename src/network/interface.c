@@ -1,6 +1,5 @@
 #include "network/interface.h"
 
-
 int get_my_mac_adresse(const int sock, const char *interface, uint8_t *my_mac)
 {
     struct ifreq ifreq_c;

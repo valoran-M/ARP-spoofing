@@ -15,12 +15,10 @@ set(HEADERS
     src/network/network.h
     src/network/packet.h
 
-    src/utils/debug.h
     src/utils/utils.h
 )
 
 add_executable(arp-poison src/main.c ${SRCS} ${HEADERS})
 add_compile_options(-Wall -Wextra -pedantic -Werror)
-# add_compile_definitions(DEBUG_MODE)
 target_compile_features(arp-poison PRIVATE cxx_std_17)
 target_include_directories(arp-poison PUBLIC src/)

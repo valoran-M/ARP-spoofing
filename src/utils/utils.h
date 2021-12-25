@@ -6,8 +6,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-#include "utils/debug.h"
-
 #define ETH_ADD_L 6
 #define IP_ADD_L 4
 #define ETH_BRODCAST \

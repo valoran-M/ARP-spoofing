@@ -7,7 +7,6 @@
 
 #include "network/network.h"
 #include "utils/utils.h"
-#include "utils/debug.h"
 
 typedef struct s_arp_packet
 {
@@ -18,9 +17,9 @@ typedef struct s_arp_packet
     uint16_t operation;
     uint8_t sender_mac[ETH_ADD_L];
     uint8_t sender_ip[IP_ADD_L];
-    uint8_t taget_mac[ETH_ADD_L];
-    uint8_t taget_ip[IP_ADD_L];
-} p_arp_packet;
+    uint8_t target_mac[ETH_ADD_L];
+    uint8_t target_ip[IP_ADD_L];
+} t_arp_packet;
 
 typedef struct s_ether_trame
 {
@@ -43,14 +42,14 @@ typedef struct s_ether_trame
  */
 int create_ethernet_trame(t_ether_trame *ether,
                           const uint8_t *dest_mac, const uint8_t *src_mac,
-                          const p_arp_packet *arp_p);
+                          const t_arp_packet *arp_p);
 
 /**
  * @brief Create a arp packet object
  *
  * @see /src/network/packet.c
  *
- * @param p_arp_packet*
+ * @param t_arp_packet*
  * @param opcode arp code
  * @param dest_mac
  * @param dest_ip
@@ -59,7 +58,7 @@ int create_ethernet_trame(t_ether_trame *ether,
  *
  * @return int error info
  */
-int create_arp_packet(p_arp_packet *arp, const uint16_t opcode,
+int create_arp_packet(t_arp_packet *arp, const uint16_t opcode,
                       const uint8_t *dest_mac, const char *dest_ip,
                       const uint8_t *src_mac, const char *spoofed_ip);
 

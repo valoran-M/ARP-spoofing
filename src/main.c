@@ -1,7 +1,6 @@
 #include "network/interface.h"
 #include "network/network.h"
 #include "utils/utils.h"
-#include "utils/debug.h"
 
 int main(int argc, char *argv[])
 {

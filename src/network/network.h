@@ -7,7 +7,6 @@
 #include <linux/if_packet.h>
 
 #include "network/packet.h"
-#include "utils/debug.h"
 #include "utils/utils.h"
 
 /**
@@ -30,9 +29,9 @@ int send_packet_to_brodcast(const int sock, struct sockaddr_ll *device,
  *
  * @param sock
  * @param victim_ip
- * @param victime_mac_adresse
+ * @param victim_mac_address
  * @return int
  */
-int get_victim_response(const int sock, const char *victim_ip, uint8_t *victime_mac_adresse);
+int get_victim_response(const int sock, const char *victim_ip, uint8_t *victim_mac_address);
 
 #endif /* NETWORK_H */
