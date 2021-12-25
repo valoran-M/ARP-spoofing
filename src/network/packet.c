@@ -1,6 +1,6 @@
 #include "network/packet.h"
 
-int create_ethernet_trame(t_ether_trame *ether, const uint8_t *dest_mac, const uint8_t *src_mac, const t_arp_packet *arp_p)
+int create_ethernet_trame(t_ether_tram *ether, const uint8_t *dest_mac, const uint8_t *src_mac, const t_arp_packet *arp_p)
 {
     memcpy(&ether->dest_mac, dest_mac, sizeof(uint8_t) * ETH_ADD_L);
     memcpy(&ether->src_mac, src_mac, sizeof(uint8_t) * ETH_ADD_L);

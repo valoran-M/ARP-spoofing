@@ -50,6 +50,13 @@ int main(int argc, char *argv[])
         error("get_victim_response():");
         ret = 1;
     }
+    else if (repeated_sending(sock, &device,
+                              my_mac_adress, spoofed_ip,
+                              victim_mac_adress, victime_ip))
+    {
+        error("repeated_sending():");
+        ret = 1;
+    }
 
     if (sock > 0)
         close(sock);

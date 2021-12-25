@@ -21,26 +21,27 @@ typedef struct s_arp_packet
     uint8_t target_ip[IP_ADD_L];
 } t_arp_packet;
 
-typedef struct s_ether_trame
+typedef struct s_ether_tram
 {
     uint8_t dest_mac[ETH_ADD_L];
     uint8_t src_mac[ETH_ADD_L];
     uint16_t ether_type;
-} t_ether_trame;
+    t_arp_packet arp_packet;
+} t_ether_tram;
 
 /**
  * @brief Create a ethernet tram object
  *
  * @see /src/network/packet.c
  *
- * @param t_ether_trame*
+ * @param t_ether_tram*
  * @param code
  * @param dest_mac
  * @param src_mac
  *
  * @return int error info
  */
-int create_ethernet_trame(t_ether_trame *ether,
+int create_ethernet_trame(t_ether_tram *ether,
                           const uint8_t *dest_mac, const uint8_t *src_mac,
                           const t_arp_packet *arp_p);
 
