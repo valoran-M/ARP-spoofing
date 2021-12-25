@@ -1,10 +1,4 @@
-#include <stdlib.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdio.h>
-
-#include "utils/debug.h"
-#include "network/network.h"
+#include "utils/utils.h"
 
 void help()
 {

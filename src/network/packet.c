@@ -1,14 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <arpa/inet.h>
-#include <netinet/ip.h>
-#include <net/ethernet.h>
-
-#include "network/network.h"
 #include "network/packet.h"
-#include "utils/utils.h"
-#include "utils/debug.h"
 
 int create_ethernet_trame(t_ether_trame *ether, const uint8_t *dest_mac, const uint8_t *src_mac, const p_arp_packet *arp_p)
 {

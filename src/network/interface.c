@@ -1,17 +1,5 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <sys/ioctl.h>
-#include <net/if.h>
-#include <netinet/ip.h>
-#include <net/if_arp.h>
-#include <linux/if_ether.h>
-#include <linux/if_packet.h>
-
-#include "network/network.h"
 #include "network/interface.h"
-#include "utils/debug.h"
-#include "utils/utils.h"
+
 
 int get_my_mac_adresse(const int sock, const char *interface, uint8_t *my_mac)
 {

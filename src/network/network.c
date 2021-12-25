@@ -1,18 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdint.h>
-#include <arpa/inet.h>
-#include <sys/socket.h>
-#include <linux/if_packet.h>
-#include <net/ethernet.h>
-#include <net/if_arp.h>
-#include <netinet/ip.h>
-
 #include "network/network.h"
-#include "network/packet.h"
-#include "utils/debug.h"
-#include "utils/utils.h"
 
 int send_packet_to_brodcast(const int sock, struct sockaddr_ll *device,
                             const uint8_t *my_mac_address,

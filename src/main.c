@@ -1,9 +1,3 @@
-#include <stdint.h>
-#include <unistd.h>
-#include <sys/socket.h>
-#include <netinet/in.h>
-#include <netinet/if_ether.h>
-
 #include "network/interface.h"
 #include "network/network.h"
 #include "utils/utils.h"

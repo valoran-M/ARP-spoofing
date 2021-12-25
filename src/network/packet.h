@@ -1,10 +1,13 @@
 #ifndef PACKET_H
 #define PACKET_H
 
-#define ETH_HEADER_LENGTH 14
-#define ARP_HEADER_LENGTH 28
-
 #include <stdint.h>
+#include <arpa/inet.h>
+#include <linux/if_ether.h>
+
+#include "network/network.h"
+#include "utils/utils.h"
+#include "utils/debug.h"
 
 typedef struct s_arp_packet
 {

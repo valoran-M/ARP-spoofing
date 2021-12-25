@@ -1,6 +1,19 @@
 #ifndef UTILS_H
 
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
 #include <stdio.h>
+#include <unistd.h>
+
+#include "utils/debug.h"
+
+#define ETH_ADD_L 6
+#define IP_ADD_L 4
+#define ETH_BRODCAST \
+    (uint8_t[6]) { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff }
+#define ETH_HEADER_LENGTH 14
+#define ARP_HEADER_LENGTH 28
 
 #define PRINT_MAC_ADDRESS(X) fprintf(stdout, "MAC address: %02X:%02X:%02X:%02X:%02X:%02X\n", \
                                      X[0],                                                   \
