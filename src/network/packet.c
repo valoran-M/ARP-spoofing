@@ -9,7 +9,7 @@
 #include "utils/utils.h"
 #include "utils/debug.h"
 
-void create_ethernet_tram(t_ether_trame *ether, const uint8_t *dest_mac, const uint8_t *src_mac, const p_arp_packet *arp_p)
+int create_ethernet_trame(t_ether_trame *ether, const uint8_t *dest_mac, const uint8_t *src_mac, const p_arp_packet *arp_p)
 {
     ether = malloc(sizeof(t_ether_trame));
 
@@ -17,12 +17,14 @@ void create_ethernet_tram(t_ether_trame *ether, const uint8_t *dest_mac, const u
     memcpy(ether->src_mac, src_mac, sizeof(uint8_t) * IP_ADD_L);
     ether->ether_type = htons(ETH_P_ARP);
     memcpy((uint8_t *)&ether->arp_packet, arp_p, sizeof(p_arp_packet));
+    DEBUG_LOG("create ethernet trame");
+
     return 0;
 }
 
 int create_arp_packet(p_arp_packet *arp, const uint16_t opcode,
-                        const uint8_t *dest_mac, const char *dest_ip,
-                        const uint8_t *src_mac, const char *spoofed_ip)
+                      const uint8_t *dest_mac, const char *dest_ip,
+                      const uint8_t *src_mac, const char *spoofed_ip)
 {
     arp = malloc(sizeof(p_arp_packet));
 

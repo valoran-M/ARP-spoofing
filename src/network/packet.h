@@ -1,8 +1,8 @@
 #ifndef PACKET_H
 #define PACKET_H
 
-# define ETH_HEADER_LENGTH 14
-# define ARP_HEADER_LENGTH 28
+#define ETH_HEADER_LENGTH 14
+#define ARP_HEADER_LENGTH 28
 
 #include <stdint.h>
 
@@ -36,8 +36,12 @@ typedef struct s_ether_trame
  * @param code
  * @param dest_mac
  * @param src_mac
+ *
+ * @return int error info
  */
-int create_ethernet_tram(t_ether_trame *ether, const uint8_t *dest_mac, const uint8_t *src_mac, const p_arp_packet *arp_p);
+int create_ethernet_trame(t_ether_trame *ether,
+                          const uint8_t *dest_mac, const uint8_t *src_mac,
+                          const p_arp_packet *arp_p);
 
 /**
  * @brief Create a arp packet object
@@ -50,9 +54,11 @@ int create_ethernet_tram(t_ether_trame *ether, const uint8_t *dest_mac, const ui
  * @param dest_ip
  * @param src_mac
  * @param spoofed_ip
+ *
+ * @return int error info
  */
 int create_arp_packet(p_arp_packet *arp, const uint16_t opcode,
-                       const uint8_t *dest_mac, const char *dest_ip,
-                       const uint8_t *src_mac, const char *spoofed_ip);
+                      const uint8_t *dest_mac, const char *dest_ip,
+                      const uint8_t *src_mac, const char *spoofed_ip);
 
 #endif /* PACKET_H */

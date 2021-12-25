@@ -1,8 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(arp VERSION 0.0.1)
+project(arp-poison VERSION 0.0.1)
 
 set(SRCS
+    src/network/interface.c
     src/network/packet.c
     src/network/network.c
 
@@ -10,6 +11,7 @@ set(SRCS
 )
 
 set(HEADERS
+    src/network/interface.h
     src/network/network.h
     src/network/packet.h
 
@@ -17,6 +19,8 @@ set(HEADERS
     src/utils/utils.h
 )
 
-add_executable(arp src/main.c ${SRCS} ${HEADERS})
-target_compile_features(arp PRIVATE cxx_std_17)
-target_include_directories(arp PUBLIC src/)
+add_executable(arp-poison src/main.c ${SRCS} ${HEADERS})
+add_compile_options(-Wall -Wextra -pedantic -Werror)
+add_compile_definitions(DEBUG_MODE)
+target_compile_features(arp-poison PRIVATE cxx_std_17)
+target_include_directories(arp-poison PUBLIC src/)

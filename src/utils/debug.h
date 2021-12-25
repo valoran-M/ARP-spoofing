@@ -2,11 +2,13 @@
 
 #ifdef DEBUG_MODE
 
-#define DEBUG_LOG(x)                                                    \
-    {                                                                   \
-        fprintf(stderr, "%s %s line %d", __FILE__, __func__, __LINE__); \
-        fprintf(stderr, args);                                          \
-        fprintf(stderr, "\n");                                          \
+#include <stdio.h>
+
+#define DEBUG_LOG(x)                                                          \
+    {                                                                         \
+        fprintf(stderr, "=> %s %s line %d : ", __FILE__, __func__, __LINE__); \
+        fprintf(stderr, x);                                                   \
+        fprintf(stderr, "\n");                                                \
     }
 #else
 

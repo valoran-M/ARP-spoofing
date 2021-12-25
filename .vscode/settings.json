@@ -8,6 +8,8 @@
         "future": "c",
         "system_error": "c",
         "ip.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "interface.h": "c",
+        "debug.h": "c"
     }
 }

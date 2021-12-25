@@ -89,6 +89,6 @@ _deps
 .history
 .ionide
 
-arp
-
 # End of https://www.toptal.com/developers/gitignore/api/c,cmake,visualstudiocode
+
+arp-poison
