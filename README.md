@@ -1,5 +1,7 @@
 # arp_poisoning
 
+software related to the arp protocol with the libc
+
 ![fiole](image/fiole_verte.png)
 
 ## inspired by
@@ -11,3 +13,9 @@
 - multiple other source code on the internet
 
 ### arp render
+
+- in development
+
+## Warning
+
+made for educational purposes to learn how to use raw sockets. I am trying to code protection software
