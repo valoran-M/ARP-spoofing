@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(arp-poison VERSION 0.0.1)
+project(arp_poisoning VERSION 0.0.1)
 
 set(SRCS
     arp_poisoning/network/interface.c
@@ -18,7 +18,7 @@ set(HEADERS
     arp_poisoning/utils/utils.h
 )
 
-add_executable(arp-poison arp_poisoning/main.c ${SRCS} ${HEADERS})
+add_executable(arp_poisoning arp_poisoning/main.c ${SRCS} ${HEADERS})
 add_compile_options(-Wall -Wextra -pedantic -Werror)
 target_compile_features(arp-poison PRIVATE cxx_std_17)
 target_include_directories(arp-poison PUBLIC arp_poisoning/)
