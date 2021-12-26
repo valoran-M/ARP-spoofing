@@ -21,24 +21,24 @@ who wants to send a packet to this IP will send it to us.
 ### arp
 
 
-<table style="margin: 0 auto; text-align: center; width: 50em;">
+<table style="margin: 0 auto; width: 50em;">
     <tbody>
         <tr>
             <th align="center" colspan="1">+</th>
-            <th colspan="8" width="25%">Bits 0 - 7</th>
-            <th colspan="8" width="25%">8 - 15</th>
-            <th colspan="16" width="50%">16 - 31</th>
+            <th align="center" colspan="8" width="25%">Bits 0 - 7</th>
+            <th align="center" colspan="8" width="25%">8 - 15</th>
+            <th align="center" colspan="16" width="50%">16 - 31</th>
         </tr>
         <tr>
             <th>0</th>
-            <td colspan="16">Hardware type</td>
-            <td colspan="16">Protocol type</td>
+            <td align="center" colspan="16">Hardware type</td>
+            <td align="center" colspan="16">Protocol type</td>
         </tr>
         <tr>
             <th>32</th>
-            <td colspan="8">Hardware Address Length</td>
-            <td colspan="8">Protocol Address Length</td>
-            <td colspan="16">Operation</td>
+            <td align="center" colspan="8">Hardware Address Length</td>
+            <td align="center" colspan="8">Protocol Address Length</td>
+            <td align="center" colspan="16">Operation</td>
         </tr>
         <tr>
             <th>64</th>
@@ -46,16 +46,16 @@ who wants to send a packet to this IP will send it to us.
         </tr>
         <tr>
             <th>?</th>
-            <td colspan="32">Sender Protocol Address</td>
+            <td align="center" colspan="32">Sender Protocol Address</td>
         </tr>
         <tr>
             <th>?</th>
-            <td colspan="32">Target Hardware Address
+            <td  align="center"colspan="32">Target Hardware Address
             </td>
         </tr>
         <tr>
             <th>?</th>
-            <td colspan="32">Target Protocol Address
+            <td align="center" colspan="32">Target Protocol Address
             </td>
         </tr>
     </tbody>
