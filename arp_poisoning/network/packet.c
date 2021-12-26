@@ -7,7 +7,7 @@ int create_ethernet_trame(t_ether_tram *ether, const uint8_t *dest_mac, const ui
 
     ether->ether_type = htons(ETH_P_ARP);
 
-    memcpy((uint8_t *)ether + ETH_HEADER_LENGTH, arp_p, sizeof(uint8_t) * ARP_HEADER_LENGTH);
+    memcpy((uint8_t *)&(ether->arp_packet), arp_p, sizeof(uint8_t) * ARP_HEADER_LENGTH);
     printf("[+] ETHER trame create\n");
 
     return 0;
