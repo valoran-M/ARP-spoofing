@@ -20,69 +20,48 @@ who wants to send a packet to this IP will send it to us.
 
 ### arp
 
-<tbody>
-    <tr>
-        <td>
-            <table class="wikitable" style="margin: 0 auto; text-align: center; width: 50em;">
-                <tbody>
-                    <tr>
-                        <th colspan="1">+
-                        </th>
-                        <th colspan="8" width="25%">Bits 0 - 7
-                        </th>
-                        <th colspan="8" width="25%">8 - 15
-                        </th>
-                        <th colspan="16" width="50%">16 - 31
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>0
-                        </th>
-                        <td colspan="16"><span class="lang-en" lang="en"><i>Hardware type</i></span>
-                        </td>
-                        <td colspan="16"><span class="lang-en" lang="en"><i>Protocol type</i></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>32
-                        </th>
-                        <td colspan="8"><span class="lang-en" lang="en"><i>Hardware Address Length</i></span>
-                        </td>
-                        <td colspan="8"><span class="lang-en" lang="en"><i>Protocol Address Length</i></span>
-                        </td>
-                        <td colspan="16"><span class="lang-en" lang="en"><i>Operation</i></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>64
-                        </th>
-                        <td colspan="32"><span class="lang-en" lang="en"><i>Sender Hardware Address</i></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>?
-                        </th>
-                        <td colspan="32"><span class="lang-en" lang="en"><i>Sender Protocol Address</i></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>?
-                        </th>
-                        <td colspan="32"><span class="lang-en" lang="en"><i>Target Hardware Address</i></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>?
-                        </th>
-                        <td colspan="32"><span class="lang-en" lang="en"><i>Target Protocol Address</i></span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-    </tr>
-</tbody>
+
+<table class="wikitable" style="margin: 0 auto; text-align: center; width: 50em;">
+    <tbody>
+        <tr>
+            <th colspan="1">+</th>
+            <th colspan="8" width="25%">Bits 0 - 7</th>
+            <th colspan="8" width="25%">8 - 15</th>
+            <th colspan="16" width="50%">16 - 31</th>
+        </tr>
+        <tr>
+            <th>0</th>
+            <td colspan="16">Hardware type</td>
+            <td colspan="16">Protocol type</td>
+        </tr>
+        <tr>
+            <th>32</th>
+            <td colspan="8">Hardware Address Length</td>
+            <td colspan="8">Protocol Address Length</td>
+            <td colspan="16">Operation</td>
+        </tr>
+        <tr>
+            <th>64</th>
+            <td colspan="32">Sender Hardware Address</td>
+        </tr>
+        <tr>
+            <th>?</th>
+            <td colspan="32">Sender Protocol Address</td>
+        </tr>
+        <tr>
+            <th>?</th>
+            <td colspan="32">Target Hardware Address
+            </td>
+        </tr>
+        <tr>
+            <th>?</th>
+            <td colspan="32">Target Protocol Address
+            </td>
+        </tr>
+    </tbody>
 </table>
+
+
 
 
 
