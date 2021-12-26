@@ -49,7 +49,6 @@ int get_victim_response(const int sock, const char *victim_ip, uint8_t *victim_m
             memcpy(&ether_tram, buffer, sizeof(t_ether_tram));
             if (ntohs(ether_tram.ether_type) == ETH_P_ARP)
             {
-                ether_tram.arp_packet;
                 if (inet_ntop(AF_INET, ether_tram.arp_packet.sender_ip, ip_str, INET_ADDRSTRLEN) < 0)
                     error("inet_ntop():");
                 else if (ntohs(ether_tram.arp_packet.operation) == ARPOP_REPLY && strcmp(ip_str, victim_ip) == 0)
