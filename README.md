@@ -22,39 +22,36 @@ who wants to send a packet to this IP will send it to us.
 <table style="margin: 0 auto; width: 50em;">
     <tbody>
         <tr>
-            <th align="center" colspan="1">+</th>
-            <th align="center" colspan="8" width="25%">Bits 0 - 7</th>
-            <th align="center" colspan="8" width="25%">8 - 15</th>
-            <th align="center" colspan="16" width="50%">16 - 31</th>
+            <th align="center" width="25%">Octet 1</th>
+            <th align="center" width="25%">Octet 2</th>
+            <th align="center" width="25%">Octet 3</th>
+            <th align="center" width="25%">Octet 4</th>
         </tr>
         <tr>
-            <th>0</th>
-            <td align="center" colspan="16">Hardware type</td>
-            <td align="center" colspan="16">Protocol type</td>
+            <td align="center" colspan="2">Hardware type</td>
+            <td align="center" colspan="2">Protocol type</td>
         </tr>
         <tr>
-            <th>32</th>
-            <td align="center" colspan="8">Hardware Address Length</td>
-            <td align="center" colspan="8">Protocol Address Length</td>
-            <td align="center" colspan="16">Operation</td>
+            <td align="center" colspan="1">Hardware Address Length</td>
+            <td align="center" colspan="1">Protocol Address Length</td>
+            <td align="center" colspan="2">Operation</td>
         </tr>
         <tr>
-            <th>64</th>
-            <td align="center" colspan="32">Sender Hardware Address</td>
+            <td align="center" colspan="4">Adresse MAC source (octets 1-4)</td>
         </tr>
         <tr>
-            <th>?</th>
-            <td align="center" colspan="32">Sender Protocol Address</td>
+            <td align="center" colspan="2">Adresse MAC source (octets 5-6)</td>
+            <td align="center" colspan="2">Adresse IP source (octets 1-2)</td>
         </tr>
         <tr>
-            <th>?</th>
-            <td  align="center"colspan="32">Target Hardware Address
-            </td>
+            <td align="center" colspan="2">Adresse IP source (octets 3-4</)</td>
+            <td align="center" colspan="2">Adresse MAC destination (octets 1-2)</td>
         </tr>
         <tr>
-            <th>?</th>
-            <td align="center" colspan="32">Target Protocol Address
-            </td>
+            <td align="center" colspan="4">Adresse MAC destination (octets 3-6)</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="4">Adresse IP destination (octets 1-4)</td>
         </tr>
     </tbody>
 </table>
@@ -76,6 +73,36 @@ typedef struct s_arp_packet
 
 #### Ethernet :
 
+<table style="margin: 0 auto; width: 50em;">
+    <tbody>
+        <tr>
+            <th align="center" width="25%">Octet 1</th>
+            <th align="center" width="25%">Octet 2</th>
+            <th align="center" width="25%">Octet 3</th>
+            <th align="center" width="25%">Octet 4</th>
+        </tr>
+        <tr>
+            <td align="center" colspan="4">Adresse MAC destination (octets 1-4)</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">Adresse MAC destination (octets 5-6)</td>
+            <td align="center" colspan="2">Adresse MAC source (octets 1-2)</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="4">Adresse MAC source (octets 3-6)</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2">Protocol type</td>
+            <td align="center" colspan="2">Data</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="4">Data</td>
+        </tr>
+        <tr>
+            <td align="center" colspan="4">...</td>
+        </tr>
+    </tbody>
+</table>
 
 ```c
 typedef struct s_ether_tram
