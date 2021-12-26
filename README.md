@@ -17,9 +17,7 @@ who wants to send a packet to this IP will send it to us.
 ![schema](image/schema.png)
 
 ## package structure
-
-### arp
-
+#### arp :
 
 <table style="margin: 0 auto; width: 50em;">
     <tbody>
@@ -61,9 +59,33 @@ who wants to send a packet to this IP will send it to us.
     </tbody>
 </table>
 
+```c
+typedef struct s_arp_packet
+{
+    uint16_t hardware_type;
+    uint16_t protocol_type;
+    uint8_t hardware_adress_length;
+    uint8_t protocol_address_length;
+    uint16_t operation;
+    uint8_t sender_mac[ETH_ADD_L];
+    uint8_t sender_ip[IP_ADD_L];
+    uint8_t target_mac[ETH_ADD_L];
+    uint8_t target_ip[IP_ADD_L];
+} t_arp_packet;
+```
+
+#### Ethernet :
 
 
-
+```c
+typedef struct s_ether_tram
+{
+    uint8_t dest_mac[ETH_ADD_L];
+    uint8_t src_mac[ETH_ADD_L];
+    uint16_t ether_type;
+    t_arp_packet arp_packet;
+} t_ether_tram;
+```
 
 ## inspired by
 
