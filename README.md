@@ -4,6 +4,10 @@ software related to the arp protocol with the libc
 
 ![fiole](image/fiole_verte.png)
 
+## explanation
+
+![schema](image/schema.png)
+
 ## inspired by
 
 ### arp poisoning
