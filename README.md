@@ -21,10 +21,10 @@ who wants to send a packet to this IP will send it to us.
 ### arp
 
 
-<table class="wikitable" style="margin: 0 auto; text-align: center; width: 50em;">
+<table style="margin: 0 auto; text-align: center; width: 50em;">
     <tbody>
         <tr>
-            <th colspan="1">+</th>
+            <th align="center" colspan="1">+</th>
             <th colspan="8" width="25%">Bits 0 - 7</th>
             <th colspan="8" width="25%">8 - 15</th>
             <th colspan="16" width="50%">16 - 31</th>
@@ -42,7 +42,7 @@ who wants to send a packet to this IP will send it to us.
         </tr>
         <tr>
             <th>64</th>
-            <td colspan="32">Sender Hardware Address</td>
+            <td align="center" colspan="32">Sender Hardware Address</td>
         </tr>
         <tr>
             <th>?</th>
