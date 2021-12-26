@@ -1,8 +1,8 @@
-# arp_poisoning
+# arp poisoning
 
 software related to the arp protocol with the libc
 
-![fiole](image/fiole_verte.png)
+<img src="picture/green_flask.png" width="100"/>
 
 the arp protocol allows to link the ip address to 
 the mac address for that we send an arp 
@@ -14,7 +14,7 @@ will look in the arp table and will not pass the mac address.
 So if we send an arp request by changing your IP, the person 
 who wants to send a packet to this IP will send it to us.
 
-![schema](image/schema.png)
+![schema](picture/schema.png)
 
 ## package structure
 #### arp :
